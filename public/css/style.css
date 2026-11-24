@@ -1,0 +1,67 @@
+/* Brandon Gable Photography — main styles
+   Dark, simple portfolio theme. No framework. */
+
+/* Page defaults */
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #111111;   /* near-black background */
+  color: #f2f2f2;        /* off-white text */
+  line-height: 1.6;
+}
+
+/* Top bar */
+header {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #333333;
+}
+
+header h1 {
+  margin: 0 0 1rem 0;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+/* Nav links */
+nav a {
+  color: #cccccc;
+  text-decoration: none;
+  margin: 0 0.75rem;
+}
+
+nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Main content — centered, not full-width */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Photo grid — used later on gallery pages */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #888888;
+  border-top: 1px solid #333333;
+}

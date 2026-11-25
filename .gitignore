@@ -1,0 +1,22 @@
+# Photos — deployed via Firebase from your laptop, not stored in Git
+public/images/**/*.jpg
+public/images/**/*.jpeg
+public/images/**/*.png
+public/images/**/*.webp
+
+# Keep the images folder itself in Git, even when empty
+!public/images/.gitkeep
+
+# Operating system junk
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Firebase local cache
+.firebase/
+
+# Node (for later, when you install tools)
+node_modules/

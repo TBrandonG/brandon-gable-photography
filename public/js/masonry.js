@@ -54,34 +54,32 @@ async function buildGallery() {
   const gallery = document.querySelector('.gallery');
   if (!gallery) return;
 
-  // Load the list Python generated
-  const response = await fetch('data/home-photos.json');
+  // Which JSON file, and what path prefix for images on THIS page?
+  const jsonFile = gallery.dataset.json;   // e.g. "data/travel-photos.json"
+  const base = gallery.dataset.base || ''; // "" on home, "../" on travels/
+
+  const response = await fetch(base + jsonFile);
   const photos = await response.json();
 
-  // Random order each visit
   shuffle(photos);
 
-    // Watch for photos entering the screen, fade them in then
-    const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+      if (entry.isIntersecting) {
         entry.target.classList.add('loaded');
-        observer.unobserve(entry.target);  // only fade once
-        }
+        observer.unobserve(entry.target);
+      }
     });
-    }, { threshold: 0.1 });  // trigger when 10% of the photo is visible
-        
-    // Build one <img> per photo, with dimensions so the browser reserves space
-    photos.forEach(photo => {
+  }, { threshold: 0.1 });
+
+  photos.forEach(photo => {
     const img = document.createElement('img');
-    img.src = photo.src;
+    img.src = base + photo.src;   // "../" + "images/travels/..." on travels page
     img.alt = photo.alt;
     img.width = photo.width;
     img.height = photo.height;
     img.loading = 'lazy';
-
-    observer.observe(img);  // instead of the load listener
-    
+    observer.observe(img);
     gallery.appendChild(img);
   });
 
